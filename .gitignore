@@ -13,3 +13,6 @@ __unconfig*
 todos.json
 .vscode
 .idea
+
+# Local Netlify folder
+.netlify
