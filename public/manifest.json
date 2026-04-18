@@ -1,0 +1,20 @@
+{
+  "short_name": "New Tab - Smirkyea",
+  "name": "Excellent new tab experience created by Smirkyea in TanStack.",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "128x128",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "images/background.png",
+      "type": "image/png",
+      "sizes": "1304x778"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

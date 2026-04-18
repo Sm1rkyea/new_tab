@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Madimi+One&display=swap");
+
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-madimi: "Madimi One", ui-sans-serif, system-ui, sans-serif;
+}
+
+@utility container-shadow {
+  @apply drop-shadow-md drop-shadow-[#2F862A]/10;
+}
+
+@utility link-tertiary {
+  @apply text-(--palm-deep) transition-colors duration-200 hover:text-(--palm-hard)
+}
+
+:root {
+  --palm: #E2F9E3;
+  --palm-soft: #92BD90;
+  --palm-medium: #71BD74;
+  --palm-hard: #518C4E;
+  --palm-deep: #31682E;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #app {
+  min-height: 100%;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  pointer-events: none;
+}
