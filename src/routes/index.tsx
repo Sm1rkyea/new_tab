@@ -7,9 +7,9 @@ import { getTemperature } from "utils/TemperatureUtil"
 import { Footer } from "#/components/navigation/Footer"
 import { sheetList } from "constants/sheets"
 import { SheetContainer } from "#/components/container/SheetContainer"
-import { gsap } from "gsap"
-import { SplitText } from "gsap/all"
 import { useGSAP } from "@gsap/react"
+import gsap from "gsap"
+import { SplitText } from "gsap/SplitText"
 
 export const Route = createFileRoute('/')({ component: App })
 
