@@ -45,9 +45,9 @@ function App() {
   useGSAP(() => {
     if (!timeRef.current) return
 
-    const chars = timeRef.current.querySelectorAll(".char")
+    const timeChars = timeRef.current.querySelectorAll(".timeChar")
 
-    gsap.from(chars, {
+    gsap.from(timeChars, {
       yPercent: -1000,
       duration: 0.8,
       ease: "expo.out",
@@ -96,7 +96,9 @@ function App() {
       <div className="space-y-5 w-full md:w-2xl">
         <div ref={timeRef} className="time timeBox bg-(--palm) rounded-[40px] py-3 w-full text-(--palm-hard) text-[72px] text-center container-shadow overflow-hidden">
           {time.split("").map((char, i) => (
-            <span key={i} className="char inline-block">{char === ":" ? ":" : char}</span>
+            <span key={i} className="timeChar inline-block">
+              {char === ":" ? ":" : char}
+            </span>
           ))}
         </div>
 
