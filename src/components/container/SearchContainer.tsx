@@ -5,12 +5,13 @@ export const SearchContainer = () => {
   const [value, setValue] = useState("")
   const inputRef = useRef<HTMLInputElement>(null)
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     if (!value.trim()) return
 
     window.location.href = `https://www.google.com/search?q=${encodeURIComponent(value)}`
+    return
   }
 
   const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
