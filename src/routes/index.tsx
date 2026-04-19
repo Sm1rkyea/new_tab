@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { createFileRoute } from '@tanstack/react-router'
 import { useQuery } from "@tanstack/react-query"
 import { SearchContainer } from "#/components/container/SearchContainer"
@@ -9,11 +9,8 @@ import { sheetList } from "constants/sheets"
 import { SheetContainer } from "#/components/container/SheetContainer"
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
-import SplitText from "gsap/src/SplitText"
 
 export const Route = createFileRoute('/')({ component: App })
-
-gsap.registerPlugin(SplitText)
 
 function App() {
   const [time, setTime] = useState(new Date().toLocaleTimeString('cs-CZ', {
@@ -21,6 +18,8 @@ function App() {
     minute: '2-digit',
     second: '2-digit',
   }))
+
+  const timeRef = useRef<HTMLDivElement>(null)
 
   const { data: temperature } = useQuery({
     queryKey: ["temperature"],
@@ -44,9 +43,11 @@ function App() {
   }, [])
 
   useGSAP(() => {
-    const timeSplit = new SplitText(".time", { type: "chars, words" })
+    if (!timeRef.current) return
 
-    gsap.from(timeSplit.chars, {
+    const chars = timeRef.current.querySelectorAll(".char")
+
+    gsap.from(chars, {
       yPercent: -1000,
       duration: 0.8,
       ease: "expo.out",
@@ -93,8 +94,10 @@ function App() {
   return (
     <section className="my-6 md:my-22 flex flex-col items-center w-screen px-4 md:px-0">
       <div className="space-y-5 w-full md:w-2xl">
-        <div className="time timeBox bg-(--palm) rounded-[40px] py-3 w-full text-(--palm-hard) text-[72px] text-center container-shadow">
-          {time}
+        <div ref={timeRef} className="time timeBox bg-(--palm) rounded-[40px] py-3 w-full text-(--palm-hard) text-[72px] text-center container-shadow overflow-hidden">
+          {time.split("").map((char, i) => (
+            <span key={i} className="char inline-block">{char === ":" ? ":" : char}</span>
+          ))}
         </div>
 
         <div className="searchBox">
